@@ -12,25 +12,23 @@ var state = getColumn(url, 8);
 function getAddressByCity(City){
   var citAdd = [];
   for (var i = 0; i < city.length; i++){
-    if (city[i] == City){
+    if (city[i].toLowerCase() == City.toLowerCase()){
       citAdd.push(address[i]);
     }
   }
-    for (var i = 0; i < citAdd.length; i++){
     if (citAdd.length == 0){
-      return "Try Another US City Location";
+      return "Try Another City Location, or check spelling";
     }
-  }
 return citAdd;
-}
-//console.log(getAddressByCity("Boulder"))
+ }
+//console.log(getAddressByCity("denver"))
 
 
 // takes state and returns the cities that have targets at them in that state witha helpful error message like 'springfield' doesent have a target;
 function getCityTargetState(State){
   var stateFinder = [];
   for (var i = 0; i < state.length; i++){
-    if (state[i] == State){
+    if (state[i].toLowerCase() == State.toLowerCase()){
       stateFinder.push(city[i]);
     }
   }
@@ -39,7 +37,7 @@ function getCityTargetState(State){
     }
 return stateFinder;
 }
-//console.log(getCityTargetState("New York"));
+//console.log(getCityTargetState("Colordo"));
 
 
 
@@ -47,7 +45,7 @@ return stateFinder;
 function statesCountyTarget(State){
   var findCounty = [];
   for (var i = 0; i < state.length; i++){
-    if (state[i] == State){
+    if (state[i].toLowerCase() == State.toLowerCase()){
       findCounty.push(county[i])
     }
   } 
@@ -56,13 +54,13 @@ function statesCountyTarget(State){
   }
   return findCounty;
 }
-console.log(statesCountyTarget("Azironax"));
+//console.log(statesCountyTarget("Albemarle"));
 
 // tells the postal of targets in given city
 function PostalsOfTargetsInCity(CITY){
   var CiTy = [];
   for (var i = 0; i < city.length; i++){
-    if (city[i] == CITY){
+    if (city[i].toLowerCase() == CITY.toLowerCase()){
       CiTy.push(postal[i]);
     }
   }
@@ -70,11 +68,11 @@ function PostalsOfTargetsInCity(CITY){
     return "No Targets There!";
   }
   if (CiTy == 1){
-   return "Only 1:"+ postal[i];
+   return "Only 1: "+ postal[i];
   }
   return CiTy;
 }
-//console.log(PostalsOfTargetsInCity("Salem"));
+//console.log(PostalsOfTargetsInCity("Charlottesville"));
 
 
 
@@ -82,7 +80,7 @@ function PostalsOfTargetsInCity(CITY){
 function addressOfTargets(Addresses){
     var addres = [];
     for (var i = 0; i < address.length; i++){
-    if (address[i] == Addresses){
+    if (address[i].toLowerCase() == Addresses.tolowerCase()){
       addres.push(postal[i] + ", " + county[i] + " County");
     }
 }
@@ -91,4 +89,4 @@ function addressOfTargets(Addresses){
       }
   return addres;
 }
-//console.log(addressOfTargets("4225 Crestview Dr"));
+console.log(addressOfTargets("15,3660 Marketplace Blvd,East Point,Fulton,33.66,-84.5,30344.0,GA,Georgia"));
